@@ -10,7 +10,7 @@ class Back4AllService {
       var viaCepModel = ViaCEPModel([]);
       var url = _url;
       if (cep != null && cep.isNotEmpty) {
-        url = "$url?where={\"cep\":$cep}";
+        url = "$url?where={\"cep\":\"$cep\"}";
       }
       var result = await _customDioBack4App.dio.get(url);
 
@@ -35,7 +35,7 @@ class Back4AllService {
 
   Future<void> put(ViaCEPBack4All viaCEPBack4All) async {
     try {
-      var url = "_url/${viaCEPBack4All.objectId}";
+      var url = "$_url/${viaCEPBack4All.objectId}";
       var body = viaCEPBack4All.toJsonCreate();
       await _customDioBack4App.dio.put(url, data: body);
     } catch (e) {
@@ -45,7 +45,7 @@ class Back4AllService {
 
   Future<void> delete(String id) async {
     try {
-      var url = "_url/$id";
+      var url = "$_url/$id";
       await _customDioBack4App.dio.delete(url);
     } catch (e) {
       rethrow;

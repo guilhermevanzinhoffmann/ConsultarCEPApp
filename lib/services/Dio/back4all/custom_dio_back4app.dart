@@ -9,6 +9,7 @@ class CustomDioBack4App {
 
   CustomDioBack4App() {
     _dio.options.baseUrl = dotenv.get("BACK4ALL_BASE_URL");
+    _dio.options.headers["Content-Type"] = dotenv.get("CONTENT_TYPE");
     _dio.interceptors.add(CustomDioBack4AllInterceptor());
   }
 }
